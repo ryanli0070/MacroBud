@@ -1,0 +1,342 @@
+/* ── Reset & Base ─────────────────────────────────── */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  background: #f5f7f5;
+  color: #1a1a1a;
+  min-height: 100vh;
+}
+
+/* ── App Container ───────────────────────────────── */
+
+.app {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 4rem;
+}
+
+/* ── Header ──────────────────────────────────────── */
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #2d6a4f;
+  letter-spacing: -0.5px;
+}
+
+.tagline {
+  font-size: 0.95rem;
+  color: #6b7280;
+  margin-top: 0.3rem;
+}
+
+/* ── Input Form ──────────────────────────────────── */
+
+.input-form {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.food-input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: 2px solid #d1d5db;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.food-input:focus {
+  border-color: #2d6a4f;
+}
+
+.food-input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.add-btn {
+  padding: 0.75rem 1.5rem;
+  background: #2d6a4f;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 72px;
+}
+
+.add-btn:hover:not(:disabled) {
+  background: #1b4332;
+}
+
+.add-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── Spinner ─────────────────────────────────────── */
+
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2.5px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ── Clarification Banners ───────────────────────── */
+
+.clarification {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  background: #fef9c3;
+  border: 1px solid #fbbf24;
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.6rem;
+  font-size: 0.9rem;
+}
+
+.clarification-icon {
+  font-weight: 700;
+  color: #b45309;
+  font-size: 1rem;
+  min-width: 20px;
+  text-align: center;
+}
+
+.clarification-text {
+  flex: 1;
+  line-height: 1.45;
+  color: #78350f;
+}
+
+.clarification-dismiss {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: #b45309;
+  cursor: pointer;
+  padding: 0 4px;
+  line-height: 1;
+}
+
+/* ── Error Banner ────────────────────────────────── */
+
+.error {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fef2f2;
+  border: 1px solid #fca5a5;
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+  color: #991b1b;
+}
+
+.error-dismiss {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: #991b1b;
+  cursor: pointer;
+  padding: 0 4px;
+  line-height: 1;
+}
+
+/* ── Running Totals ──────────────────────────────── */
+
+.totals {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.totals-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #6b7280;
+  margin-bottom: 0.5rem;
+}
+
+.totals-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.total-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.total-value {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #2d6a4f;
+}
+
+.total-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #9ca3af;
+  font-weight: 500;
+}
+
+/* ── Food List ───────────────────────────────────── */
+
+.food-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.food-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+  transition: box-shadow 0.15s;
+}
+
+.food-card:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.food-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.4rem;
+}
+
+.food-description {
+  font-weight: 500;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  flex: 1;
+  margin-right: 0.5rem;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  color: #9ca3af;
+  cursor: pointer;
+  padding: 0 4px;
+  line-height: 1;
+  transition: color 0.15s;
+}
+
+.delete-btn:hover {
+  color: #ef4444;
+}
+
+.food-macros {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.macro {
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+  background: #f3f4f6;
+  color: #4b5563;
+}
+
+.macro.cal {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.macro.protein {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.macro.carbs {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.macro.fat {
+  background: #fce7f3;
+  color: #9d174d;
+}
+
+/* ── Empty State ─────────────────────────────────── */
+
+.empty-state {
+  text-align: center;
+  color: #9ca3af;
+  font-size: 0.95rem;
+  margin-top: 3rem;
+}
+
+/* ── Responsive ──────────────────────────────────── */
+
+@media (max-width: 480px) {
+  .app {
+    padding: 1.5rem 1rem 3rem;
+  }
+
+  .title {
+    font-size: 1.75rem;
+  }
+
+  .input-form {
+    flex-direction: column;
+  }
+
+  .add-btn {
+    width: 100%;
+  }
+
+  .totals-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+}
