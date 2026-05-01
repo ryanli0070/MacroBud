@@ -1,4 +1,5 @@
 import os
+import re
 import json
 from openai import OpenAI
 
@@ -60,12 +61,14 @@ async def estimate_macros(description: str) -> dict:
         temperature=0.2,
     )
 
-    content = response.choices[0].message.content.strip()
+    content = response.choices[0].message.content
 
-    if content.startswith("```"):
-        content = content.split("\n", 1)[1]
-        if content.endswith("```"):
-            content = content[:-3]
-        content = content.strip()
+    match = re.search(r"\{.*\}", content, re.DOTALL)
+    if not match:
+        raise ValueError(f"No JSON object found in model response: {content!r}")
 
-    return json.loads(content)
+    raw_json = match.group(0)
+    try:
+        return json.loads(raw_json)
+    except json.JSONDecodeError as e:
+        raise ValueError(f"Failed to parse JSON from model response: {e.msg}") from e
