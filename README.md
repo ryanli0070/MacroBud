@@ -1,6 +1,6 @@
 # MacroBud
 
-Estimate your macros, skip the measuring cup. Type in what you ate and get calorie/protein/carbs/fat estimates powered by OpenAI.
+Tracking macros gets tiring, and when we eventually all give up, we just start estimating in our heads. Macrobud estimates for you, giving more accurate figures so you actually hit your goals.
 
 ## Prerequisites
 
